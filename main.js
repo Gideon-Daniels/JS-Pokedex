@@ -17,26 +17,33 @@ function getPokemonList(url) {
       container.innerHTML = "";
       // Loop over pokemon list and create an HTML button for each one. Add the button to the container
       pokemon.forEach((btn) => {
-        container.innerHTML += `<button onclick="getPokemonInfo('${btn.url}')">${btn.name}</button>`;
+        container.innerHTML += `<button class="button" onclick="getPokemonInfo('${btn.url}')">${btn.name}</button>`;
       });
       // Add a next pokemon button
-      container.innerHTML += `<br><br><button onclick="getPokemonList('${data.next}')">Next</button>`;
+      container.innerHTML += `<br><br><button class="next-button" onclick="getPokemonList('${data.next}')">Next</button>`;
+      container.innerHTML += `<br><br><button class="previous-button" onclick="getPokemonList('${data.previous}')">Previous</button>`;
     });
 }
 
 // Get default pokemon list
 getPokemonList(base_URL);
 
-// Function to get information about a specific pokemin
+// Function to get information about a specific pokemon
 function getPokemonInfo(url) {
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      // Make sure data comes throufg
+      // Make sure data comes through
       console.log(data);
+      let sprites = data.sprites.front_default;
+      let name = data.name;
+      let weight = data.weight;
+      let base_exp = data.base_experience;
       // Write data to pokemon information container
       document.querySelector(".pokemon-info").innerHTML = `
-    <img src="${data.sprites.front_default} ">
+    <img src="${sprites}" classs="sprites">
+    <h3 class="name">${name}</h3>
+
     `;
     });
 }
