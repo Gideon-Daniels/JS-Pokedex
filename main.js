@@ -12,16 +12,20 @@ function getPokemonList(url) {
       // Get the list of pokemon from the results
       let pokemon = data.results;
       // Get element from HTML to write buttons in
-      let container = document.querySelector(".pokemon-list-container");
-      // Clear the container
-      container.innerHTML = "";
+      let pokemon_container = document.querySelector(".pokemon-list-container");
+      // pokemon_container.innerHTML += `<h1 class="header">Pokedex</h1>`;
+      // pokemon_container.innerHTML += `<div class="pokemon-list"></div>`;
+      let pokemon_list = document.querySelector(".pokemon-list");
+       // Clear the pokemon-list container
+       pokemon_list.innerHTML = " ";
       // Loop over pokemon list and create an HTML button for each one. Add the button to the container
       pokemon.forEach((btn) => {
-        container.innerHTML += `<button class="button" onclick="getPokemonInfo('${btn.url}')">${btn.name}</button>`;
+        pokemon_list.innerHTML += `<button class="button" onclick="getPokemonInfo('${btn.url}')">${btn.name}</button>`;
       });
       // Add a next pokemon button
-      container.innerHTML += `<br><br><button class="next-button" onclick="getPokemonList('${data.next}')">Next</button>`;
-      container.innerHTML += `<br><br><button class="previous-button" onclick="getPokemonList('${data.previous}')">Previous</button>`;
+      pokemon_list.innerHTML += `<button class="next-button" onclick="getPokemonList('${data.next}')">Next</button>`;
+      pokemon_list.innerHTML += `<button class="previous-button" onclick="getPokemonList('${data.previous}')">Previous</button>`;
+      
     });
 }
 
@@ -42,8 +46,20 @@ function getPokemonInfo(url) {
       // Write data to pokemon information container
       document.querySelector(".pokemon-info").innerHTML = `
     <img src="${sprites}" classs="sprites">
-    <h3 class="name">${name}</h3>
-
-    `;
+    <h3 class="name">${name}</h3>`;
+    
     });
 }
+
+// ////////////////////////////POKEMON TYPE//////////////////////////////
+let pokemon_type = document.querySelector("#pokemon-type");
+pokemon_type.innerHTML += `<ul class="items"></ul>`;
+let items = document.querySelector(".items");
+items.innerHTML += `<li class="item"></li>`;
+items.innerHTML += `<li class="item"></li>`;
+items.innerHTML += `<li class="item"></li>`;
+items.innerHTML += `<li class="item"></li>`;
+items.innerHTML += `<li class="item"></li>`;
+items.innerHTML += `<li class="item"></li>`;
+items.innerHTML += `<li class="item"></li>`;
+items.innerHTML += `<li class="item"></li>`;
