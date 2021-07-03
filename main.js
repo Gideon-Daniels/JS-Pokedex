@@ -22,7 +22,7 @@ function getPokemonList(url) {
         fetch(btn.url)
         .then(res => res.json())
         .then(pokemon => {
-          console.log(pokemon.sprites.front_default)
+          // console.log(pokemon.sprites.front_default)
           pokemon_list.innerHTML += `<div class="pokemon-sprites"> <img onclick="getPokemonInfo('${btn.url}')" src="${pokemon.sprites.front_default}"></div>`;
         })
       });
@@ -47,10 +47,16 @@ function getPokemonInfo(url) {
       let sprites = data.sprites.other["official-artwork"].front_default;
       let name = data.name;
       let weight = data.weight;
-      let heigth = data.heigth;
+      let height = data.height;
       let base_exp = data.base_experience;
-      let ability = data.abilities[0].ability.name
-      let type = data.types[0].type.name
+      let ability = data.abilities;
+      let type = data.types;
+      let a = ``;
+      for(let i = 0; i < ability.length;i++ ){
+        console.log(ability[i].ability.name)
+         a += `<span class="description">${ability[i].ability.name}</span>`
+      }
+
       // Write data to pokemon information container
       document.querySelector(".images").innerHTML = `
     <img src="${sprites}" classs="sprites">`;
@@ -58,39 +64,13 @@ function getPokemonInfo(url) {
     details.innerHTML = 
     `<h1 class="heading">${name}</h1>
      <ul class="items">
-      <li class="item"><span class="label">HEIGHT</span><span class=description>${heigth}</span></li>
-      <li class="item"><span class="label">WEIGHT</span><span class=description>${weight}</span></li>
-      <li class="item"><span class="label">BASE EXP</span><span class=description>${base_exp}</span></li>
-      <li class="item"><span class="label">ABILITY</span><span class=description>${ability}</span></li>
-      <li class="item"><span class="label">TYPE</span><span class=description>${type}</span></li>
+      <li class="item"><span class="label">HEIGHT</span><span class="description" >${data.height}</span></li>
+      <li class="item"><span class="label">WEIGHT</span><span class="description" >${weight}</span></li>
+      <li class="item"><span class="label">BASE EXP</span><span class="description" >${base_exp}</span></li>
+      <li class="item"><span class="label">ABILITY</span>${a}</li>
+      <li class="item"><span class="label">TYPE</span><span class="description type"  >${type}</span></li>
      </ul> 
     `; 
     });
 }
 
-// function getPokemonSprites(url) {
-//   fetch(url)
-//     .then((response) => response.json())
-//     .then((data) => {
-//       // Make sure data comes through 
-//       let sprites = data.sprites.front_default;
-//       pokemon_sprite = document.querySelector(".pokemon");
-//       pokemon_sprite.style.backgroundImage = url(sprites);
-  
-//     });
-// }
-
-
-
-// ////////////////////////////POKEMON TYPE//////////////////////////////
-// let pokemon_type = document.querySelector("#pokemon-type");
-// pokemon_type.innerHTML += `<ul class="items"></ul>`;
-// let items = document.querySelector(".items");
-// items.innerHTML += `<li class="item"></li>`;
-// items.innerHTML += `<li class="item"></li>`;
-// items.innerHTML += `<li class="item"></li>`;
-// items.innerHTML += `<li class="item"></li>`;
-// items.innerHTML += `<li class="item"></li>`;
-// items.innerHTML += `<li class="item"></li>`;
-// items.innerHTML += `<li class="item"></li>`;
-// items.innerHTML += `<li class="item"></li>`;
