@@ -51,10 +51,16 @@ function getPokemonInfo(url) {
       let base_exp = data.base_experience;
       let ability = data.abilities;
       let type = data.types;
+      // looping through abilities
       let a = ``;
       for(let i = 0; i < ability.length;i++ ){
         console.log(ability[i].ability.name)
-         a += `<span class="description">${ability[i].ability.name}</span>`
+         a += `<span class="description">${ability[i].ability.name}</span>`;
+      }
+      let t=" ";
+      for(let i = 0; i < type.length; i++){
+        console.log(type[i].type.name)
+        t += `<span class=description>${type[i].type.name}</span>`;
       }
 
       // Write data to pokemon information container
@@ -68,7 +74,7 @@ function getPokemonInfo(url) {
       <li class="item"><span class="label">WEIGHT</span><span class="description" >${weight}</span></li>
       <li class="item"><span class="label">BASE EXP</span><span class="description" >${base_exp}</span></li>
       <li class="item"><span class="label">ABILITY</span>${a}</li>
-      <li class="item"><span class="label">TYPE</span><span class="description type"  >${type}</span></li>
+      <li class="item"><span class="label">TYPE</span>${t}</li>
      </ul> 
     `; 
     });
