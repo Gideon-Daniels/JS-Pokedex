@@ -123,13 +123,12 @@ background: rgba( 255, 255, 255, 0.15 );
 }
 #main-container .pokemon-list-container .pokemon-list .pokemon-sprites img{
 object-fit: cover;
-height: 100%;
-width: 100%;
+
 }
 /* //////////////////////////////POKEMON INFO ///////////////////////////*/
 #main-container .pokemon-info {
     width: 50%;
-    height: 100%;
+    /* height: 100%; */
     background: rgba( 255, 255, 255, 0.15 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 4px );
@@ -145,6 +144,7 @@ width: 100%;
 display: flex;
 justify-content: center;
 align-items: center;
+align-self: center;
 }
 
 #main-container .pokemon-info .images img{
@@ -154,16 +154,16 @@ align-items: center;
 
 
 #main-container .pokemon-info .details{
-height: 50%;
 width: 100%;
+height: 100%;
 display: flex;
 flex-direction: column;
-justify-content: space-around;
-align-items: center;
+/* justify-content: space-around; */
+/* align-items: center; */
 border-radius: 2px;
 background-color: none;
-padding: 10px 15px;
-
+/* padding: 10px 15px; */
+/* overflow-y: hidden; */
 }
 #main-container .pokemon-info .details .items{
 width: 100%;
@@ -190,4 +190,48 @@ backdrop-filter: blur( 4px );
 -webkit-backdrop-filter: blur( 4px );
 border-radius: 10px;
 border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+@media screen and (max-width: 750px){
+   body{
+      
+       flex-direction: column;
+   }
+   #pokemon-type{
+       height: 0px;
+   }
+   #main-container{
+       flex-direction: column;
+   }
+   #main-container .pokemon-list-container{
+       width: 100%;
+       height: 50%;
+   }
+#main-container .pokemon-list-container .pokemon-list{
+    flex-wrap: nowrap;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    justify-content: flex-start;
+}
+
+#main-container .pokemon-list-container .pokemon-list .pokemon-sprites{
+    width: 80px;
+    height: 80px;
+}
+
+#main-container .pokemon-list-container .pokemon-list .pokemon-sprites img {
+    object-fit: cover;
+    width: 70px;
+}
+
+#main-container .pokemon-info{
+    display: flex;
+    width: 100%;
+    height: 50%;
+    align-items: center;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
 }
