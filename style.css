@@ -155,10 +155,10 @@ align-self: center;
 
 #main-container .pokemon-info .details{
 width: 100%;
-height: 100%;
+height: 50%;
 display: flex;
 flex-direction: column;
-/* justify-content: space-around; */
+justify-content: space-around;
 /* align-items: center; */
 border-radius: 2px;
 background-color: none;
